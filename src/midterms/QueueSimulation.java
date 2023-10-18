@@ -7,7 +7,39 @@ import java.util.*;
  * An arriving client joins the queue of clients.
  * The server serves a client following First Come First Served discipline
  REQUIRED:
- WRITE THE ALGORITHM BELOW
+ 1.Initialize the simulation parameters:
+    -averageInterarrival: Average time between client arrivals
+    -simulationTimeDuration: Length of the simulation time
+    -meanServiceTime: Mean service time for the server
+ 2.Create a random number generator for arrival times and service times.
+ 3.Generate the arrival time for the first client using the random arrival generator.
+ 4.Create an empty queue to hold the clients.
+ 5.Initialize the client ID to 1.
+ 6.Create a server object.
+ 7.Run the simulation from time = 0 to the simulation time duration.
+ 8.Check if a client arrives at the current time:
+    -If the current time equals the next arrival time:
+        =Create a new client object with the current client ID and arrival time.
+        =Add the client to the queue of waiting clients.
+        =Display the queue of waiting clients and the number of clients in the list.
+        =Increment the client ID.
+        =Generate the random arrival time for the next client.
+ 9.Check if the server is idle and there is a client waiting to be served:
+    -If the server is idle and the queue of waiting clients is not empty:
+        =Remove the first client from the queue.
+        =Set the server's client to the client being served.
+        =Set the start service time for the server to the current time.
+        =Generate a random service time for the server.
+        =Calculate the time when the server will become free.
+        =Set the stop service time for the server.
+        =Display that the server has started serving the client and when it will be free.
+        =Display the updated queue of waiting clients.
+ 10.Check if the server has finished serving a client:
+    -If the current time equals the stop service time of the server and the current time is greater than 0:
+        =Display that the server has finished serving the client.
+        =Set the server's client to null, indicating that it is idle.
+ 11.Repeat steps 8 to 10 until the simulation time duration is reached.
+ 12.End the simulation.
 
  */
 public class QueueSimulation {
