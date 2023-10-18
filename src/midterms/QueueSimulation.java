@@ -1,11 +1,12 @@
-package midterms;
-
-import java.util.*;
 /**
+ * Name: Aragon, Danielle John P.
+ * 9443-IT212/IT212L-SAMCIS-CIS
+ * =========================================================================
  * A typical Service system has servers and clients.
  *
  * An arriving client joins the queue of clients.
  * The server serves a client following First Come First Served discipline
+ * =========================================================================
  REQUIRED:
  1.Initialize the simulation parameters:
     -averageInterarrival: Average time between client arrivals
@@ -42,6 +43,9 @@ import java.util.*;
  12.End the simulation.
 
  */
+package midterms;
+
+import java.util.*;
 public class QueueSimulation {
     public static void main(String[] args){
         QueueSimulation simulation;
@@ -56,9 +60,12 @@ public class QueueSimulation {
     public void run(){
         java.util.Random randomArrivalGenerator = new java.util.Random();
         java.util.Random randomServiceTimeGenerator = new java.util.Random();
+        // Average time between client arrivals
         int averageInterarrival = 4;
-        int simulationTimeDuration = 50; // length of simulation time
-        double meanServiceTime = 5;
+        // Total simulation time duration
+        int simulationTimeDuration = 50;
+        // Mean service time for clients
+        double meanServiceTime = 3;
         // Generate random arrival of the first client
         int nextArrivalTime=randomArrivalGenerator.nextInt(averageInterarrival);
         // Create an ArrayList that will hold Queue of Clients
@@ -82,7 +89,7 @@ public class QueueSimulation {
                 clientId += 1;
                 // Generate the random arrival time of the next client
                 nextArrivalTime += 1 + randomArrivalGenerator.nextInt(averageInterarrival);
-                System.out.println("Next client will arrive at time= " + nextArrivalTime);
+                System.out.println("Next client will arrive at time = " + nextArrivalTime);
             }
             // Check if the server is idle and if there is a client waiting to be served
             if (server.isIdle() && !myListOfClients.isEmpty()){
@@ -94,7 +101,7 @@ public class QueueSimulation {
                 int serveTime = randomServiceTimeGenerator.nextInt((int) meanServiceTime);
                 int timeForServerToBecomeFree = time + serveTime;
                 server.setStopServiceTime(timeForServerToBecomeFree);
-                System.out.println("At time= "+ time + " Server started serving client "+ clientToServe +".");
+                System.out.println("At time = "+ time + " Server started serving client "+ clientToServe +".");
                 System.out.println("Server will be free at time = " + timeForServerToBecomeFree);
                 //Show the updated Queue of waiting clients
                 showList(myListOfClients);
